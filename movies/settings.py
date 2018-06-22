@@ -26,9 +26,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'w_kdaz#o9go4t2ox@o!hh-6$ct8v6%k&6$56kql-6(o!@)fkuu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
 #DEBUG = config('DEBUG', cast=bool)
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 #EMAIL_PORT = config('EMAIL_PORT', cast=int)
 
 
@@ -100,7 +101,7 @@ DATABASES = {
 # Everything provided for accessing the database.
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'movieinfo',
         'USER': 'root',
         'PASSWORD': 'r@thn@m4',
@@ -162,5 +163,5 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 import dj_database_url
-db_from_env = dj_database_url.config()
+db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
