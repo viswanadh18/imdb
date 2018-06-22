@@ -12,14 +12,9 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 from decouple import config
-import dj_database_url
 
 
-DATABASES = {
-      'default': dj_database_url.config(
-          default='sqlite:////{0}'.format(os.path.join(BASE_DIR, 'db.sqlite3'))
-      )
-  }
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -32,9 +27,9 @@ SECRET_KEY = 'w_kdaz#o9go4t2ox@o!hh-6$ct8v6%k&6$56kql-6(o!@)fkuu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-DEBUG = config('DEBUG', cast=bool)
-ALLOWED_HOSTS = []
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
+#DEBUG = config('DEBUG', cast=bool)
+ALLOWED_HOSTS = ['127.0.0.1']
+#EMAIL_PORT = config('EMAIL_PORT', cast=int)
 
 
 # Application definition
@@ -156,10 +151,11 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
-
+'''
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+'''
